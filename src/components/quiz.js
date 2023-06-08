@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Answer from "./Answer";
 
 const Quiz = ({question}) => {
@@ -8,13 +8,18 @@ const Quiz = ({question}) => {
   const handleOpen = () => {
     setIsOpen(prevState => !prevState)
   }
+
   const handleAnswer = (isCorrect) => {
     setIsAnswered(true)
     setIsCorrect(isCorrect)
-    setTimeout(() => {
-      setIsAnswered(false)
-    }, 5000)
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsAnswered(false)
+
+    }
+  }, [isOpen])
   return (
     <section className={"quiz"}>
       <div className="quiz__header" onClick={handleOpen}>
@@ -22,7 +27,7 @@ const Quiz = ({question}) => {
       </div>
       <div className={`quiz__content ${isOpen ? "quiz__content-open" : ""}`}>
         <form action="" className={"quiz__form"}>
-          {question.answers.map((answer, index) => {
+          {isOpen && question.answers.map((answer, index) => {
             return <Answer key={index} answer={answer} handleAnswer={handleAnswer}/>
           })}
         </form>
