@@ -217,7 +217,7 @@ function App() {
                         <Login onLogin={handleAuthorization} />
                     </Route>
                     <Route path="/">
-                        {loggedIn ? <Redirect to={pathName} /> : <Redirect to="/sign-in" />}
+                        {loggedIn ? <Redirect to={"/"} /> : <Redirect to="/sign-in" />}
                     </Route>
                 </Switch>
                 <Footer />
