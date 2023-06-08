@@ -5,7 +5,7 @@ import Test from "./Test";
 import Footer from "./Footer";
 import ImagePopup from './ImagePopup';
 import { useEffect, useState } from 'react';
-import { Route, Redirect, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import api from "../utils/Api";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from "./EditProfilePopup";
@@ -29,27 +29,24 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [userEmail, setUserEmail] = useState('');
-    const [pathName, setPathName] = useState("/")
     const history = useHistory();
-    const location = useLocation()
-
     useEffect(() => {
         api.getProfile()
-            .then((data) => {
-                setCurrentUser(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+          .then((data) => {
+              setCurrentUser(data)
+          })
+          .catch((err) => {
+              console.log(err)
+          })
     }, [])
     useEffect(() => {
         api.getInitialCards()
-            .then((data) => {
-                setCards(data);
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+          .then((data) => {
+              setCards(data);
+          })
+          .catch((err) => {
+              console.log(err)
+          })
     }, [])
 
     function handleCardLike(card) {
@@ -62,13 +59,13 @@ function App() {
 
     function handleCardDelete(card) {
         api.deleteCard(card._id)
-            .then(() => {
-                const updateCardsList = cards.filter((c) => c._id !== card._id)
-                setCards(updateCardsList);
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+          .then(() => {
+              const updateCardsList = cards.filter((c) => c._id !== card._id)
+              setCards(updateCardsList);
+          })
+          .catch((err) => {
+              console.log(err)
+          })
     }
 
     function handleEditAvatarClick() {
@@ -98,93 +95,82 @@ function App() {
     function handleUpdateUser(user) {
         setIsLoading(true)
         api.setUserInfo(user)
-            .then((user) => {
-                setCurrentUser(user)
-                closeAllPopups()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => setIsLoading(false))
+          .then((user) => {
+              setCurrentUser(user)
+              closeAllPopups()
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          .finally(() => setIsLoading(false))
     }
 
     function handleUpdateAvatar(avatar) {
         setIsLoading(true)
         api.changeAvatar(avatar)
-            .then((avatar) => {
-                setCurrentUser(avatar)
-                closeAllPopups()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => setIsLoading(false))
+          .then((avatar) => {
+              setCurrentUser(avatar)
+              closeAllPopups()
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          .finally(() => setIsLoading(false))
     }
 
     function handleAddPlaceSubmit(newCard) {
         setIsLoading(true)
         api.setCard(newCard)
-            .then((newCard) => {
-                setCards([newCard, ...cards])
-                closeAllPopups()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => setIsLoading(false))
+          .then((newCard) => {
+              setCards([newCard, ...cards])
+              closeAllPopups()
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          .finally(() => setIsLoading(false))
     }
     function handleRegistration(email, password) {
         register(email, password)
-            .then(() => {
-                setIsSuccess(true);
-                setIsInfoTooltipOpen(true);
-                history.push('/sign-in');
-            })
-            .catch((err) => {
-                console.log(err);
-                setIsSuccess(false);
-                setIsInfoTooltipOpen(true);
-            })
+          .then(() => {
+              setIsSuccess(true);
+              setIsInfoTooltipOpen(true);
+              history.push('/sign-in');
+          })
+          .catch((err) => {
+              console.log(err);
+              setIsSuccess(false);
+              setIsInfoTooltipOpen(true);
+          })
     }
 
     function handleAuthorization(email, password) {
         login(email, password)
-            .then((data) => {
-                if (data.token) {
-                    setUserEmail(email)
-                    setLoggedIn(true);
-                    history.push(pathName);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+          .then((data) => {
+              if (data.token) {
+                  setUserEmail(email)
+                  setLoggedIn(true);
+                  history.push('/');
+              }
+          })
+          .catch((err) => {
+              console.log(err);
+          })
     }
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
             checkToken(jwt)
-                .then((res) => {
-                    setUserEmail(res.data.email);
-                    setLoggedIn(true);
-                    history.push(pathName);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
+              .then((res) => {
+                  setUserEmail(res.data.email);
+                  setLoggedIn(true);
+                  history.push('/');
+              })
+              .catch((err) => {
+                  console.log(err);
+              })
         }
     }, [history])
-    useEffect(() => {
-        if (location.pathname !== "/sign-in" || location.pathname !== "/sign-up") {
-            setPathName(location.pathname)
-            localStorage.setItem("path", location.pathname)
-        }
-    }, [location])
-    useEffect(() => {
-        if (localStorage.getItem("path")) {
-            history.push(localStorage.getItem("path"))
-        }
-    }, [])
     function handleSignOut() {
         localStorage.removeItem('jwt');
         history.push('/sign-in');
