@@ -88,8 +88,8 @@ function App() {
         setSelectedCard({})
     }
 
-    function handleCardClick(card) {
-        setSelectedCard(card)
+    function handleCardClick() {
+      history.push("/test")
     }
 
     function handleUpdateUser(user) {
