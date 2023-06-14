@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sidework/static/css/main.7e49b031.css",
-    "main.js": "/sidework/static/js/main.93823a93.js",
+    "main.js": "/sidework/static/js/main.d63233b9.js",
     "static/js/787.5530211c.chunk.js": "/sidework/static/js/787.5530211c.chunk.js",
     "static/media/Inter-Medium.woff?v=3.19": "/sidework/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/sidework/static/media/Inter-Black.c6938660eec019fefd68.woff",
@@ -22,11 +22,11 @@
     "static/media/button-add.svg": "/sidework/static/media/button-add.bed8c136e13907f5eefb.svg",
     "static/media/close-mobile.svg": "/sidework/static/media/close-mobile.622e8cdafa2222aa7c54.svg",
     "main.7e49b031.css.map": "/sidework/static/css/main.7e49b031.css.map",
-    "main.93823a93.js.map": "/sidework/static/js/main.93823a93.js.map",
+    "main.d63233b9.js.map": "/sidework/static/js/main.d63233b9.js.map",
     "787.5530211c.chunk.js.map": "/sidework/static/js/787.5530211c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7e49b031.css",
-    "static/js/main.93823a93.js"
+    "static/js/main.d63233b9.js"
   ]
 }
