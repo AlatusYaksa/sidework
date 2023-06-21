@@ -38,7 +38,7 @@ export const questions = [
         name: "second"
       },
       {
-        answer: "Пока",
+        answer: "До свидания",
         isCorrect: false,
         name: "second"
       },
