@@ -1,74 +1,74 @@
 export const questions = [
   {
-    title: "Вопрос 1",
+    title: "Как переводится слово 안녕 ",
     answers: [
       {
-        answer: "Ответ 1",
+        answer: "Привет",
         isCorrect: true,
         name: "first"
       },
       {
-        answer: "Ответ 2",
+        answer: "Мама",
         isCorrect: false,
         name: "first"
       },
       {
-        answer: "Ответ 3",
+        answer: "Папа",
         isCorrect: false,
         name: "first"
       },
       {
-        answer: "Ответ 4",
+        answer: "Пока",
         isCorrect: false,
         name: "first"
       },
     ]
   },
   {
-    title: "Вопрос 2",
+    title: "Как переводится слово 오빠",
     answers: [
       {
-        answer: "Ответ 1",
+        answer: "Старшая сестра",
         isCorrect: false,
         name: "second"
       },
       {
-        answer: "Ответ 2",
+        answer: "Старший брат",
         isCorrect: true,
         name: "second"
       },
       {
-        answer: "Ответ 3",
+        answer: "Мама",
         isCorrect: false,
         name: "second"
       },
       {
-        answer: "Ответ 4",
+        answer: "Младший брат",
         isCorrect: false,
         name: "second"
       },
     ]
   },
   {
-    title: "Вопрос 3",
+    title: "Как переводится слово 집",
     answers: [
       {
-        answer: "Ответ 1",
+        answer: "Здравствуйте",
         isCorrect: false,
         name: "third"
       },
       {
-        answer: "Ответ 2",
+        answer: "Машина",
         isCorrect: false,
         name: "third"
       },
       {
-        answer: "Ответ 3",
+        answer: "Дом",
         isCorrect: true,
         name: "third"
       },
       {
-        answer: "Ответ 4",
+        answer: "Красный",
         isCorrect: false,
         name: "third"
       },
