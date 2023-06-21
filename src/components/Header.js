@@ -10,7 +10,7 @@ function Header(props) {
         <header className="header">
             <img className="header__logo" src={logo} alt="логотип проекта Место" />
             <div className="header__links">
-                {props.loggedIn ? <><p className="header__email">{props.email}</p><Link to='/test' className="header__link header__email">Тест</Link><Link to='/sign-in' className="header__link" onClick={props.handleSignOut}>Выйти</Link></> : <Link to={path} className="header__link">{text}</Link>}
+                {props.loggedIn ? <><p className="header__email">{props.email}</p><Link to='/sign-in' className="header__link" onClick={props.handleSignOut}>Выйти</Link></> : <Link to={path} className="header__link">{text}</Link>}
             </div>
         </header>
     )
